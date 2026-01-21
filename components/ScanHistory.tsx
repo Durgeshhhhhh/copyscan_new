@@ -90,7 +90,7 @@ export const ScanHistory: React.FC<ScanHistoryProps> = ({ user }) => {
           <p className="text-gray-500 mt-1">Review your past originality reports and source overlaps.</p>
         </div>
         <div className="bg-white border border-gray-100 rounded-full px-4 py-2 flex items-center space-x-2 shadow-sm">
-          <i className="fas fa-list-check text-indigo-400 text-xs"></i>
+          <i className="fas fa-list-check text-lavender-500 text-xs"></i>
           <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">Total Scans: {scans.length}</span>
         </div>
       </div>
@@ -100,13 +100,13 @@ export const ScanHistory: React.FC<ScanHistoryProps> = ({ user }) => {
           {scans.map((scan) => (
             <Card 
               key={scan.id} 
-              className="group cursor-pointer hover:border-indigo-300 transition-all border-gray-100"
+              className="group cursor-pointer hover:border-lavender-300 transition-all border-gray-100"
               onClick={() => setSelectedScan(scan)}
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center space-x-3 mb-2">
-                    <span className={`px-2 py-1 rounded text-[10px] font-black uppercase tracking-tighter shadow-sm ${scan.result.score > 50 ? 'bg-red-50 text-red-600' : 'bg-indigo-50 text-indigo-600'}`}>
+                    <span className={`px-2 py-1 rounded text-[10px] font-black uppercase tracking-tighter shadow-sm ${scan.result.score > 50 ? 'bg-red-50 text-red-600' : 'bg-lavender-50 text-lavender-600'}`}>
                       {scan.result.score}% OVERLAP
                     </span>
                     <span className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">
@@ -142,7 +142,7 @@ export const ScanHistory: React.FC<ScanHistoryProps> = ({ user }) => {
       {selectedScan && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-gray-900/60 backdrop-blur-sm animate-in fade-in duration-300">
           <Card className="w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col p-0 shadow-2xl rounded-[2.5rem] border-none">
-             <div className="p-8 bg-indigo-600 text-white flex justify-between items-center">
+             <div className="p-8 bg-lavender-600 text-white flex justify-between items-center">
                 <div>
                    <h3 className="text-xl font-black uppercase tracking-tight">Report Review</h3>
                    <p className="text-xs opacity-80 font-medium mt-1">Generated: {new Date(selectedScan.createdAt).toLocaleString()}</p>
@@ -154,16 +154,16 @@ export const ScanHistory: React.FC<ScanHistoryProps> = ({ user }) => {
              
              <div className="p-8 overflow-y-auto flex-1 space-y-8 scrollbar-thin">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                   <div className="bg-indigo-50 p-6 rounded-3xl border border-indigo-100">
-                      <p className="text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-1">Uniqueness</p>
-                      <p className="text-3xl font-black text-indigo-700">{100 - selectedScan.result.score}% Original</p>
+                   <div className="bg-lavender-50 p-6 rounded-3xl border border-lavender-100">
+                      <p className="text-[10px] font-black text-lavender-500 uppercase tracking-widest mb-1">Uniqueness</p>
+                      <p className="text-3xl font-bold text-lavender-700">{100 - selectedScan.result.score}% Original</p>
                    </div>
                    <div className="bg-gray-50 p-6 rounded-3xl border border-gray-100">
                       <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Matches Found</p>
                       <p className="text-3xl font-black text-gray-900">{selectedScan.result.sources.length} Items</p>
                    </div>
                 </div>
-                <div className="bg-gray-900 text-indigo-100 p-8 rounded-[2rem] shadow-inner text-sm leading-relaxed font-mono italic">
+                <div className="bg-gray-900 text-lavender-100 p-8 rounded-[2rem] shadow-inner text-sm leading-relaxed font-mono italic">
                    "{selectedScan.text}"
                 </div>
                 <div className="space-y-4">
@@ -180,8 +180,8 @@ export const ScanHistory: React.FC<ScanHistoryProps> = ({ user }) => {
                         <>
                           <div className="truncate flex-1 mr-4">
                             <div className="flex items-center space-x-2">
-                               {isVault && <i className="fas fa-database text-[10px] text-indigo-400"></i>}
-                               <p className="font-bold text-gray-900 truncate group-hover:text-indigo-600 transition-colors">{s.title}</p>
+                               {isVault && <i className="fas fa-database text-[10px] text-lavender-500"></i>}
+                               <p className="font-bold text-gray-900 truncate group-hover:text-lavender-600 transition-colors">{s.title}</p>
                             </div>
                             {isExternal ? (
                               <p className="text-[10px] text-gray-400 truncate font-mono flex items-center">
@@ -195,7 +195,7 @@ export const ScanHistory: React.FC<ScanHistoryProps> = ({ user }) => {
                                   e.stopPropagation();
                                   handleViewVaultSource(s.url);
                                 }}
-                                className="text-[9px] font-black text-indigo-600 uppercase tracking-widest mt-1 hover:underline flex items-center"
+                                className="text-[9px] font-black text-lavender-600 uppercase tracking-widest mt-1 hover:underline flex items-center"
                               >
                                 <i className="fas fa-eye mr-1.5"></i> View Original File
                               </button>
@@ -203,7 +203,7 @@ export const ScanHistory: React.FC<ScanHistoryProps> = ({ user }) => {
                                <p className="text-[10px] text-gray-400 truncate font-mono">{s.url}</p>
                             )}
                           </div>
-                          <span className={`px-2 py-1 rounded text-[10px] font-black tracking-tight ${s.score > 60 ? 'bg-red-50 text-red-600' : 'bg-indigo-50 text-indigo-600'}`}>
+                          <span className={`px-2 py-1 rounded text-[10px] font-black tracking-tight ${s.score > 60 ? 'bg-red-50 text-red-600' : 'bg-lavender-50 text-lavender-600'}`}>
                             {s.score}% Match
                           </span>
                         </>
@@ -216,7 +216,7 @@ export const ScanHistory: React.FC<ScanHistoryProps> = ({ user }) => {
                             href={s.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex justify-between items-center p-4 border border-gray-50 rounded-2xl bg-white hover:border-indigo-100 transition-all group cursor-pointer block"
+                            className="flex justify-between items-center p-4 border border-gray-50 rounded-2xl bg-white hover:border-lavender-100 transition-all group cursor-pointer block"
                             onClick={(e) => e.stopPropagation()}
                           >
                             {innerContent}
@@ -248,7 +248,7 @@ export const ScanHistory: React.FC<ScanHistoryProps> = ({ user }) => {
            <Card className="w-full max-w-2xl max-h-[80vh] overflow-hidden flex flex-col p-0 shadow-2xl rounded-[2.5rem] border-none bg-white">
               <div className="p-6 bg-gray-900 text-white flex justify-between items-center">
                  <div className="flex items-center space-x-3">
-                    <i className="fas fa-file-shield text-indigo-400"></i>
+                    <i className="fas fa-file-shield text-lavender-500"></i>
                     <h3 className="font-black uppercase tracking-tight text-sm">Vault Asset: {viewingVaultDoc.title}</h3>
                  </div>
                  <button onClick={() => setViewingVaultDoc(null)} className="text-white/50 hover:text-white"><i className="fas fa-times"></i></button>
@@ -257,7 +257,7 @@ export const ScanHistory: React.FC<ScanHistoryProps> = ({ user }) => {
                  {viewingVaultDoc.content}
               </div>
               <div className="p-4 border-t bg-gray-50 flex justify-between items-center">
-                 <button onClick={() => downloadFile(viewingVaultDoc)} className="text-[10px] font-black uppercase text-indigo-600 flex items-center px-4 py-2 hover:bg-white rounded-xl transition-colors">
+                 <button onClick={() => downloadFile(viewingVaultDoc)} className="text-[10px] font-black uppercase text-lavender-600 flex items-center px-4 py-2 hover:bg-white rounded-xl transition-colors">
                     <i className="fas fa-download mr-2"></i> Download Document
                  </button>
                  <Button onClick={() => setViewingVaultDoc(null)} variant="secondary" className="px-6 text-[10px] font-black uppercase">Dismiss</Button>

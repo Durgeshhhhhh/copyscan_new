@@ -95,7 +95,7 @@ export const TextComparison: React.FC = () => {
           <Button variant="secondary" onClick={clear} disabled={isLoading} className="bg-white border-gray-100">
             <i className="fas fa-redo mr-2"></i> Reset
           </Button>
-          <Button onClick={handleCompare} isLoading={isLoading} disabled={!textA || !textB} className="shadow-indigo-200 px-6">
+          <Button onClick={handleCompare} isLoading={isLoading} disabled={!textA || !textB} className="shadow-lavender-200 px-6">
             <i className="fas fa-columns mr-2"></i> Compare Now
           </Button>
         </div>
@@ -104,7 +104,7 @@ export const TextComparison: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Document A */}
         <Card 
-          className={`p-0 overflow-hidden flex flex-col h-[500px] border-indigo-50 shadow-xl shadow-indigo-500/5 ring-4 ring-white relative transition-all duration-300 ${isDraggingA ? 'scale-[1.02] border-indigo-400 ring-indigo-100' : ''}`}
+          className={`p-0 overflow-hidden flex flex-col h-[500px] border-lavender-50 shadow-xl shadow-lavender-500/5 ring-4 ring-white relative transition-all duration-300 ${isDraggingA ? 'scale-[1.02] border-lavender-400 ring-blue-100' : ''}`}
           onDragOver={(e) => { e.preventDefault(); setIsDraggingA(true); }}
           onDragLeave={() => setIsDraggingA(false)}
           onDrop={(e) => handleDrop(e, 'A')}
@@ -115,7 +115,7 @@ export const TextComparison: React.FC = () => {
               {!result && (
                 <button 
                   onClick={() => fileInputARef.current?.click()}
-                  className="text-indigo-600 hover:text-indigo-800 transition-colors text-[10px] font-bold uppercase flex items-center bg-indigo-50 px-2 py-1 rounded"
+                  className="text-lavender-600 hover:text-lavender-800 transition-colors text-[10px] font-bold uppercase flex items-center bg-lavender-50 px-2 py-1 rounded"
                 >
                   <i className="fas fa-file-import mr-1"></i> Upload
                 </button>
@@ -133,9 +133,9 @@ export const TextComparison: React.FC = () => {
           />
 
           {isDraggingA && (
-            <div className="absolute inset-0 bg-indigo-600/10 backdrop-blur-[2px] z-10 flex flex-col items-center justify-center border-4 border-dashed border-indigo-400 m-2 rounded-xl pointer-events-none">
-              <i className="fas fa-cloud-upload-alt text-4xl text-indigo-600 mb-2 animate-bounce"></i>
-              <span className="text-indigo-700 font-black uppercase text-xs tracking-widest">Drop File A Here</span>
+            <div className="absolute inset-0 bg-lavender-600/10 backdrop-blur-[2px] z-10 flex flex-col items-center justify-center border-4 border-dashed border-lavender-400 m-2 rounded-xl pointer-events-none">
+              <i className="fas fa-cloud-upload-alt text-4xl text-lavender-600 mb-2 animate-bounce"></i>
+              <span className="text-lavender-700 font-black uppercase text-xs tracking-widest">Drop File A Here</span>
             </div>
           )}
 
@@ -157,7 +157,7 @@ export const TextComparison: React.FC = () => {
 
         {/* Document B */}
         <Card 
-          className={`p-0 overflow-hidden flex flex-col h-[500px] border-indigo-50 shadow-xl shadow-indigo-500/5 ring-4 ring-white relative transition-all duration-300 ${isDraggingB ? 'scale-[1.02] border-indigo-400 ring-indigo-100' : ''}`}
+          className={`p-0 overflow-hidden flex flex-col h-[500px] border-lavender-50 shadow-xl shadow-lavender-500/5 ring-4 ring-white relative transition-all duration-300 ${isDraggingB ? 'scale-[1.02] border-lavender-400 ring-blue-100' : ''}`}
           onDragOver={(e) => { e.preventDefault(); setIsDraggingB(true); }}
           onDragLeave={() => setIsDraggingB(false)}
           onDrop={(e) => handleDrop(e, 'B')}
@@ -168,7 +168,7 @@ export const TextComparison: React.FC = () => {
               {!result && (
                 <button 
                   onClick={() => fileInputBRef.current?.click()}
-                  className="text-indigo-600 hover:text-indigo-800 transition-colors text-[10px] font-bold uppercase flex items-center bg-indigo-50 px-2 py-1 rounded"
+                  className="text-lavender-600 hover:text-lavender-800 transition-colors text-[10px] font-bold uppercase flex items-center bg-lavender-50 px-2 py-1 rounded"
                 >
                   <i className="fas fa-file-import mr-1"></i> Upload
                 </button>
@@ -186,9 +186,9 @@ export const TextComparison: React.FC = () => {
           />
 
           {isDraggingB && (
-            <div className="absolute inset-0 bg-indigo-600/10 backdrop-blur-[2px] z-10 flex flex-col items-center justify-center border-4 border-dashed border-indigo-400 m-2 rounded-xl pointer-events-none">
-              <i className="fas fa-cloud-upload-alt text-4xl text-indigo-600 mb-2 animate-bounce"></i>
-              <span className="text-indigo-700 font-black uppercase text-xs tracking-widest">Drop File B Here</span>
+            <div className="absolute inset-0 bg-lavender-600/10 backdrop-blur-[2px] z-10 flex flex-col items-center justify-center border-4 border-dashed border-lavender-400 m-2 rounded-xl pointer-events-none">
+              <i className="fas fa-cloud-upload-alt text-4xl text-lavender-600 mb-2 animate-bounce"></i>
+              <span className="text-lavender-700 font-black uppercase text-xs tracking-widest">Drop File B Here</span>
             </div>
           )}
 
@@ -211,15 +211,15 @@ export const TextComparison: React.FC = () => {
 
       {result && (
         <div className="space-y-4 animate-in slide-in-from-top-4 duration-500">
-          <Card className="bg-indigo-600 border-none p-8 shadow-2xl shadow-indigo-500/20 text-white">
+          <Card className="bg-lavender-600 border-none p-8 shadow-2xl shadow-lavender-500/20 text-white">
             <div className="flex flex-col md:flex-row gap-8 items-center">
               <div className="flex flex-col items-center">
-                <div className="text-5xl font-black tracking-tighter">{result.score}%</div>
-                <div className="text-[10px] font-black text-indigo-200 uppercase tracking-widest mt-1">Similarity</div>
+                <div className="text-5xl font-bold tracking-tighter">{result.score}%</div>
+                <div className="text-[10px] font-semibold text-lavender-200 uppercase tracking-widest mt-1">Similarity</div>
               </div>
               <div className="h-16 w-px bg-white/20 hidden md:block"></div>
               <div className="flex-1 space-y-2">
-                <h4 className="text-sm font-black uppercase tracking-widest text-indigo-200 flex items-center">
+                <h4 className="text-sm font-semibold uppercase tracking-widest text-lavender-200 flex items-center">
                   <i className="fas fa-info-circle mr-2"></i>
                   Comparison Intelligence
                 </h4>
@@ -230,9 +230,9 @@ export const TextComparison: React.FC = () => {
               <div className="flex flex-col items-end space-y-3">
                 <div className="flex items-center space-x-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/20">
                   <div className="w-3 h-3 bg-amber-200 rounded-sm"></div>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-indigo-100">Highlighted Matches</span>
+                  <span className="text-[10px] font-semibold uppercase tracking-widest text-lavender-100">Highlighted Matches</span>
                 </div>
-                <Button variant="secondary" onClick={() => setResult(null)} className="text-xs bg-white text-indigo-600 border-none">
+                <Button variant="secondary" onClick={() => setResult(null)} className="text-xs bg-white text-lavender-600 border-none">
                   <i className="fas fa-edit mr-2"></i> Adjust Texts
                 </Button>
               </div>

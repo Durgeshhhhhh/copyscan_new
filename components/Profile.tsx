@@ -74,11 +74,11 @@ export const Profile: React.FC<ProfileProps> = ({ user }) => {
       <div className="flex items-center space-x-4 mb-8">
         <div className="relative">
           <img 
-            src={user.photoURL || `https://ui-avatars.com/api/?name=${name || user.email}&background=6366f1&color=fff`} 
+            src={user.photoURL || `https://ui-avatars.com/api/?name=${name || user.email}&background=2563eb&color=fff`} 
             alt="Profile" 
             className="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover"
           />
-          <div className="absolute bottom-0 right-0 bg-indigo-600 p-2 rounded-full text-white shadow-sm border-2 border-white">
+          <div className="absolute bottom-0 right-0 bg-blue-600 p-2 rounded-full text-white shadow-sm border-2 border-white">
             <i className="fas fa-camera text-xs"></i>
           </div>
         </div>

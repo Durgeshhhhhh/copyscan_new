@@ -239,7 +239,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onScanDocument }) => {
     <div className="space-y-8 animate-in fade-in duration-500">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h2 className="text-3xl font-black text-gray-900 tracking-tight">Admin <span className="text-indigo-600">Intelligence</span></h2>
+          <h2 className="text-3xl font-bold text-gray-900 tracking-tight">Admin <span className="text-lavender-600">Intelligence</span></h2>
           <p className="text-gray-500 text-sm font-medium">Universal oversight of all platform activity and intellectual property.</p>
         </div>
         <div className="flex space-x-3">
@@ -255,13 +255,13 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onScanDocument }) => {
       <div className="flex border-b border-gray-100">
         <button 
           onClick={() => setActiveTab('USERS')}
-          className={`px-8 py-4 text-[10px] font-black uppercase tracking-widest border-b-2 transition-all ${activeTab === 'USERS' ? 'border-indigo-600 text-indigo-600 bg-indigo-50/30' : 'border-transparent text-gray-400 hover:text-gray-600'}`}
+          className={`px-8 py-4 text-[10px] font-black uppercase tracking-widest border-b-2 transition-all ${activeTab === 'USERS' ? 'border-lavender-600 text-lavender-600 bg-lavender-50/30' : 'border-transparent text-gray-400 hover:text-gray-600'}`}
         >
           User Directory
         </button>
         <button 
           onClick={() => setActiveTab('UNIVERSAL_VAULT')}
-          className={`px-8 py-4 text-[10px] font-black uppercase tracking-widest border-b-2 transition-all ${activeTab === 'UNIVERSAL_VAULT' ? 'border-indigo-600 text-indigo-600 bg-indigo-50/30' : 'border-transparent text-gray-400 hover:text-gray-600'}`}
+          className={`px-8 py-4 text-[10px] font-black uppercase tracking-widest border-b-2 transition-all ${activeTab === 'UNIVERSAL_VAULT' ? 'border-lavender-600 text-lavender-600 bg-lavender-50/30' : 'border-transparent text-gray-400 hover:text-gray-600'}`}
         >
           Universal Vault
         </button>
@@ -283,22 +283,22 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onScanDocument }) => {
                   <tr key={u.uid} className="hover:bg-gray-50/50 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center space-x-3">
-                        <div className="w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-xs">
+                        <div className="w-9 h-9 rounded-xl bg-lavender-600 text-white flex items-center justify-center font-bold text-xs">
                           {u.email?.[0].toUpperCase()}
                         </div>
                         <div>
                           <p className="font-bold text-sm">{u.displayName || 'Unknown'}</p>
-                          <p className="text-[10px] text-indigo-500 font-black uppercase">{u.email}</p>
+                          <p className="text-[10px] text-lavender-600 font-black uppercase">{u.email}</p>
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <span className={`px-2 py-1 rounded text-[8px] font-black uppercase ${u.role === 'admin' ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-500'}`}>
+                      <span className={`px-2 py-1 rounded text-[8px] font-black uppercase ${u.role === 'admin' ? 'bg-lavender-600 text-white' : 'bg-gray-200 text-gray-500'}`}>
                         {u.role || 'user'}
                       </span>
                     </td>
                     <td className="px-6 py-4 text-right space-x-3">
-                      <button onClick={() => inspectUser(u.uid, u.email || '', u.role || 'user', u.password)} className="text-[10px] font-black uppercase text-indigo-600">Inspect</button>
+                      <button onClick={() => inspectUser(u.uid, u.email || '', u.role || 'user', u.password)} className="text-[10px] font-black uppercase text-lavender-600">Inspect</button>
                       <button onClick={() => handleDeleteUser(u.uid, u.email)} className="text-[10px] font-black uppercase text-red-500">Remove</button>
                     </td>
                   </tr>
@@ -317,11 +317,11 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onScanDocument }) => {
                 placeholder="Search across all user files..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-2xl shadow-sm focus:ring-2 focus:ring-indigo-500 outline-none"
+                className="w-full pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-2xl shadow-sm focus:ring-2 focus:ring-lavender-500 outline-none"
               />
             </div>
-            <div className="bg-indigo-50 px-6 py-3 rounded-2xl flex items-center">
-              <span className="text-[10px] font-black uppercase text-indigo-600 tracking-widest">Total Assets: {allDocuments.length}</span>
+            <div className="bg-lavender-50 px-6 py-3 rounded-2xl flex items-center">
+              <span className="text-[10px] font-black uppercase text-lavender-600 tracking-widest">Total Assets: {allDocuments.length}</span>
             </div>
           </div>
 
@@ -341,7 +341,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onScanDocument }) => {
                     <tr key={d.id} className="hover:bg-gray-50/50 transition-colors group">
                       <td className="px-6 py-4">
                         <div className="flex items-center space-x-3">
-                          <i className="fas fa-file-lines text-indigo-400"></i>
+                          <i className="fas fa-file-lines text-lavender-500"></i>
                           <span className="font-bold text-sm text-gray-900">{d.title}</span>
                         </div>
                       </td>
@@ -354,7 +354,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onScanDocument }) => {
                       <td className="px-6 py-4 text-right space-x-3">
                         <button 
                           onClick={() => onScanDocument?.(d.content)} 
-                          className="text-[10px] font-black uppercase text-indigo-600 hover:text-indigo-900"
+                          className="text-[10px] font-black uppercase text-lavender-600 hover:text-lavender-800"
                         >
                           Scan Content
                         </button>
@@ -391,8 +391,8 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onScanDocument }) => {
                    <div className="p-4 bg-gray-50 rounded-2xl border">
                       <p className="text-[9px] font-black uppercase text-gray-400">Temporary Password</p>
                       <div className="flex justify-between items-center">
-                         <p className="text-sm font-mono font-bold text-indigo-600">{createdCredentials.pass}</p>
-                         <button onClick={() => navigator.clipboard.writeText(createdCredentials.pass)} className="text-indigo-400 hover:text-indigo-600">
+                         <p className="text-sm font-mono font-bold text-lavender-600">{createdCredentials.pass}</p>
+                         <button onClick={() => navigator.clipboard.writeText(createdCredentials.pass)} className="text-lavender-500 hover:text-lavender-700">
                            <i className="fas fa-copy"></i>
                          </button>
                       </div>
@@ -420,12 +420,12 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onScanDocument }) => {
           <Card className="w-full max-w-2xl max-h-[85vh] overflow-hidden flex flex-col p-0 shadow-2xl rounded-[2.5rem] border-none bg-white">
             <div className="p-8 bg-gray-900 text-white flex justify-between items-center">
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center text-xl font-black">
+                <div className="w-12 h-12 bg-lavender-600 rounded-2xl flex items-center justify-center text-xl font-bold">
                   {selectedUserDetail.email[0].toUpperCase()}
                 </div>
                 <div>
-                  <h3 className="text-xl font-black uppercase tracking-tight">Audit Trail</h3>
-                  <p className="text-xs text-indigo-400 font-black uppercase tracking-widest">{selectedUserDetail.email}</p>
+                  <h3 className="text-xl font-bold uppercase tracking-tight">Audit Trail</h3>
+                  <p className="text-xs text-lavender-400 font-semibold uppercase tracking-widest">{selectedUserDetail.email}</p>
                 </div>
               </div>
               <button onClick={() => setSelectedUserDetail(null)} className="text-white/60 hover:text-white"><i className="fas fa-times"></i></button>
@@ -433,24 +433,24 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onScanDocument }) => {
             
             <div className="flex bg-gray-100 p-1">
               {['SECURITY', 'SCANS', 'FILES'].map((v: any) => (
-                <button key={v} onClick={() => setSelectedUserDetail({...selectedUserDetail, view: v})} className={`flex-1 py-3 text-[10px] font-black uppercase tracking-widest transition-all ${selectedUserDetail.view === v ? 'bg-white text-indigo-600 shadow-sm rounded-xl' : 'text-gray-400'}`}>{v}</button>
+                <button key={v} onClick={() => setSelectedUserDetail({...selectedUserDetail, view: v})} className={`flex-1 py-3 text-[10px] font-black uppercase tracking-widest transition-all ${selectedUserDetail.view === v ? 'bg-white text-lavender-600 shadow-sm rounded-xl' : 'text-gray-400'}`}>{v}</button>
               ))}
             </div>
 
             <div className="flex-1 overflow-y-auto p-8 scrollbar-thin">
               {focusedScan ? (
                 <div className="space-y-6 animate-in slide-in-from-right-4">
-                   <button onClick={() => setFocusedScan(null)} className="text-[10px] font-black uppercase text-indigo-600"><i className="fas fa-arrow-left mr-2"></i> Back</button>
-                   <div className="bg-gray-900 text-indigo-100 p-8 rounded-[2rem] font-mono italic text-sm">"{focusedScan.text}"</div>
+                   <button onClick={() => setFocusedScan(null)} className="text-[10px] font-black uppercase text-lavender-600"><i className="fas fa-arrow-left mr-2"></i> Back</button>
+                   <div className="bg-gray-900 text-lavender-100 p-8 rounded-[2rem] font-mono italic text-sm">"{focusedScan.text}"</div>
                    <div className="space-y-3">
                      {focusedScan.result.sources.map((s, i) => {
                        const isVault = s.url?.startsWith('internal://vault/');
                        const isExternal = s.url && !s.url.startsWith('internal://');
                        return (
-                         <div key={i} className="p-4 border rounded-2xl flex justify-between items-center text-xs bg-white shadow-sm hover:border-indigo-200 transition-colors">
+                         <div key={i} className="p-4 border rounded-2xl flex justify-between items-center text-xs bg-white shadow-sm hover:border-lavender-200 transition-colors">
                            <div className="flex-1 truncate mr-4">
                              <div className="flex items-center space-x-2">
-                               {isVault && <i className="fas fa-database text-[10px] text-indigo-400"></i>}
+                               {isVault && <i className="fas fa-database text-[10px] text-lavender-500"></i>}
                                <span className="font-bold block truncate">{s.title}</span>
                              </div>
                              {isExternal ? (
@@ -458,7 +458,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onScanDocument }) => {
                                  href={s.url} 
                                  target="_blank" 
                                  rel="noopener noreferrer" 
-                                 className="text-indigo-600 hover:underline flex items-center mt-1 font-medium"
+                                 className="text-lavender-600 hover:underline flex items-center mt-1 font-medium"
                                >
                                  <i className="fas fa-external-link-alt text-[8px] mr-1.5 opacity-70"></i>
                                  {s.url}
@@ -466,7 +466,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onScanDocument }) => {
                              ) : isVault ? (
                                <button 
                                  onClick={() => handleViewVaultFile(s.url)}
-                                 className="text-indigo-600 hover:text-indigo-800 font-black uppercase text-[8px] mt-1 flex items-center tracking-widest"
+                                 className="text-lavender-600 hover:text-lavender-800 font-black uppercase text-[8px] mt-1 flex items-center tracking-widest"
                                >
                                  <i className="fas fa-eye mr-1.5"></i> View Original Document
                                </button>
@@ -474,7 +474,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onScanDocument }) => {
                                <span className="text-gray-400 italic text-[10px] mt-1 block">{s.url || 'Internal Asset'}</span>
                              )}
                            </div>
-                           <span className={`px-2 py-1 rounded font-black shrink-0 ${s.score > 70 ? 'bg-red-50 text-red-600' : 'bg-indigo-50 text-indigo-600'}`}>
+                           <span className={`px-2 py-1 rounded font-black shrink-0 ${s.score > 70 ? 'bg-red-50 text-red-600' : 'bg-lavender-50 text-lavender-600'}`}>
                             {s.score}% Match
                            </span>
                          </div>
@@ -485,10 +485,10 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onScanDocument }) => {
               ) : focusedDoc ? (
                 <div className="space-y-6 animate-in slide-in-from-right-4">
                   <div className="flex items-center justify-between">
-                    <button onClick={() => setFocusedDoc(null)} className="text-[10px] font-black uppercase text-indigo-600"><i className="fas fa-arrow-left mr-2"></i> Back</button>
+                    <button onClick={() => setFocusedDoc(null)} className="text-[10px] font-black uppercase text-lavender-600"><i className="fas fa-arrow-left mr-2"></i> Back</button>
                     <button 
                       onClick={() => downloadFile(focusedDoc)} 
-                      className="text-[10px] font-black uppercase text-gray-500 hover:text-indigo-600 flex items-center bg-gray-50 px-3 py-1.5 rounded-lg border"
+                      className="text-[10px] font-black uppercase text-gray-500 hover:text-lavender-600 flex items-center bg-gray-50 px-3 py-1.5 rounded-lg border"
                     >
                       <i className="fas fa-download mr-1.5"></i> Download TXT
                     </button>
@@ -499,15 +499,15 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onScanDocument }) => {
                 <div className="space-y-4">
                    {selectedUserDetail.view === 'SECURITY' && (
                      <div className="space-y-6">
-                        <div className="bg-indigo-900 text-white p-6 rounded-[2rem]">
-                          <p className="text-xs font-bold text-indigo-300 uppercase mb-2">Audit Credentials</p>
+                        <div className="bg-lavender-900 text-white p-6 rounded-[2rem]">
+                          <p className="text-xs font-bold text-lavender-300 uppercase mb-2">Audit Credentials</p>
                           <div className="space-y-3">
                              <div>
-                                <p className="text-[8px] font-black text-indigo-400 uppercase tracking-[0.2em] mb-0.5">Primary Email</p>
+                                <p className="text-[8px] font-black text-lavender-400 uppercase tracking-[0.2em] mb-0.5">Primary Email</p>
                                 <p className="font-mono text-sm">{selectedUserDetail.email}</p>
                              </div>
                              <div>
-                                <p className="text-[8px] font-black text-indigo-400 uppercase tracking-[0.2em] mb-0.5">Login Password</p>
+                                <p className="text-[8px] font-black text-lavender-400 uppercase tracking-[0.2em] mb-0.5">Login Password</p>
                                 <p className="font-mono text-xl tracking-widest">{selectedUserDetail.password || 'HIDDEN'}</p>
                              </div>
                           </div>
@@ -519,16 +519,16 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onScanDocument }) => {
                      </div>
                    )}
                    {selectedUserDetail.view === 'SCANS' && selectedUserDetail.scans.map(s => (
-                     <div key={s.id} onClick={() => setFocusedScan(s)} className="p-4 border border-gray-100 rounded-2xl hover:bg-indigo-50 cursor-pointer flex justify-between group transition-all">
+                     <div key={s.id} onClick={() => setFocusedScan(s)} className="p-4 border border-gray-100 rounded-2xl hover:bg-lavender-50 cursor-pointer flex justify-between group transition-all">
                        <span className="text-xs font-medium truncate italic flex-1 mr-4">"{s.text.slice(0, 60)}..."</span>
                        <div className="flex items-center space-x-3">
-                         <span className="text-xs font-black text-indigo-600">{s.result.score}%</span>
-                         <i className="fas fa-chevron-right text-gray-200 group-hover:text-indigo-300 text-[10px]"></i>
+                         <span className="text-xs font-black text-lavender-600">{s.result.score}%</span>
+                         <i className="fas fa-chevron-right text-gray-200 group-hover:text-lavender-400 text-[10px]"></i>
                        </div>
                      </div>
                    ))}
                    {selectedUserDetail.view === 'FILES' && selectedUserDetail.docs.map(d => (
-                     <div key={d.id} className="p-4 border border-gray-100 rounded-2xl hover:bg-indigo-50 flex justify-between items-center group transition-all">
+                     <div key={d.id} className="p-4 border border-gray-100 rounded-2xl hover:bg-lavender-50 flex justify-between items-center group transition-all">
                        <div className="flex-1 cursor-pointer" onClick={() => setFocusedDoc(d)}>
                          <span className="text-xs font-bold block text-gray-900">{d.title}</span>
                          <span className="text-[10px] text-gray-400 font-bold uppercase">{new Date(d.createdAt).toLocaleDateString()}</span>
@@ -536,14 +536,14 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onScanDocument }) => {
                        <div className="flex items-center space-x-2">
                          <button 
                             onClick={() => downloadFile(d)}
-                            className="p-2 text-gray-300 hover:text-indigo-600 transition-colors"
+                            className="p-2 text-gray-300 hover:text-lavender-600 transition-colors"
                             title="Download File"
                          >
                             <i className="fas fa-download text-xs"></i>
                          </button>
                          <button 
                             onClick={() => setFocusedDoc(d)}
-                            className="p-2 text-gray-300 hover:text-indigo-600 transition-colors"
+                            className="p-2 text-gray-300 hover:text-lavender-600 transition-colors"
                             title="View Content"
                          >
                             <i className="fas fa-eye text-xs"></i>

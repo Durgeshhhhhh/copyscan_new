@@ -139,9 +139,9 @@ export const Vault: React.FC<VaultProps> = ({ user, onScanDocument }) => {
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        <Card className="lg:col-span-4 h-fit sticky top-24 border-indigo-100 shadow-xl shadow-indigo-500/5">
+        <Card className="lg:col-span-4 h-fit sticky top-24 border-lavender-100 shadow-xl shadow-blue-500/5">
           <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
-            <i className="fas fa-file-upload text-indigo-600 mr-2"></i>
+            <i className="fas fa-file-upload text-lavender-600 mr-2"></i>
             Add New Content
           </h3>
           <form onSubmit={handleAdd} className="space-y-4">
@@ -152,7 +152,7 @@ export const Vault: React.FC<VaultProps> = ({ user, onScanDocument }) => {
                 ref={fileInputRef}
                 accept=".txt,.md,.rtf,.pdf,.docx,.pptx,.ppt,.html,.htm" 
                 onChange={handleFileUpload}
-                className="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 cursor-pointer"
+                className="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-lavender-50 file:text-lavender-700 hover:file:bg-lavender-100 cursor-pointer"
               />
               <p className="text-[9px] text-gray-400 mt-1">Supports PDF, Word, PowerPoint, HTML, and Text.</p>
             </div>
@@ -168,7 +168,7 @@ export const Vault: React.FC<VaultProps> = ({ user, onScanDocument }) => {
             <div className="space-y-1">
               <label className="text-sm font-semibold text-gray-700">Content Preview</label>
               <textarea 
-                className="w-full h-48 px-4 py-2 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition-all resize-none text-sm leading-relaxed"
+                className="w-full h-48 px-4 py-2 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-lavender-500 outline-none transition-all resize-none text-sm leading-relaxed"
                 placeholder="Paste the document text here or upload a file..."
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
@@ -200,15 +200,15 @@ export const Vault: React.FC<VaultProps> = ({ user, onScanDocument }) => {
           ) : documents.length > 0 ? (
             <div className="grid grid-cols-1 gap-4">
               {documents.map((doc) => (
-                <Card key={doc.id} className="group hover:border-indigo-300 transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/5">
+                <Card key={doc.id} className="group hover:border-lavender-300 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/5">
                   <div className="flex items-start justify-between">
                     <div className="flex-1 space-y-2">
                       <div className="flex items-center space-x-3">
-                        <div className="p-2 bg-indigo-50 rounded-lg text-indigo-600">
+                        <div className="p-2 bg-lavender-50 rounded-lg text-lavender-600">
                           <i className="fas fa-file-lines"></i>
                         </div>
                         <div>
-                          <h4 className="font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">{doc.title}</h4>
+                          <h4 className="font-bold text-gray-900 group-hover:text-lavender-600 transition-colors">{doc.title}</h4>
                           <div className="flex items-center space-x-3 mt-0.5 text-[10px] font-bold text-gray-400 uppercase tracking-tighter">
                             <span className="flex items-center">
                               <i className="far fa-calendar mr-1"></i>
@@ -229,7 +229,7 @@ export const Vault: React.FC<VaultProps> = ({ user, onScanDocument }) => {
                     <div className="flex flex-col items-end space-y-2 ml-4">
                       <Button 
                         onClick={() => onScanDocument(doc.content)}
-                        className="text-xs py-1.5 px-3 bg-indigo-50 text-indigo-700 hover:bg-indigo-600 hover:text-white border-none shadow-none"
+                        className="text-xs py-1.5 px-3 bg-lavender-50 text-lavender-700 hover:bg-lavender-600 hover:text-white border-none shadow-none"
                       >
                         <i className="fas fa-search-plus mr-1.5"></i> Scan
                       </Button>

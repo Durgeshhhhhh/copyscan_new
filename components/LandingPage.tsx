@@ -12,29 +12,29 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onLoginClick }) => {
       title: "Hybrid Scan",
       desc: "Simultaneously audit against 45B+ web documents and your private vault.",
       icon: "fa-magnifying-glass",
-      color: "text-indigo-600",
-      bg: "bg-indigo-50"
+      color: "text-lavender-600",
+      bg: "bg-lavender-50"
     },
     {
       title: "Encrypted Vault",
       desc: "Securely index and cross-reference your organization's intellectual property.",
       icon: "fa-vault",
-      color: "text-cyan-500",
-      bg: "bg-cyan-50"
+      color: "text-charcoal-700",
+      bg: "bg-charcoal-50"
     },
     {
       title: "Side-by-Side",
       desc: "Precision visual analysis with semantic phrase highlighting.",
       icon: "fa-columns",
-      color: "text-fuchsia-500",
-      bg: "bg-fuchsia-50"
+      color: "text-lavender-600",
+      bg: "bg-lavender-50"
     },
     {
       title: "Certified PDF",
       desc: "Generate legal-ready reports detailing match sources and attribution.",
       icon: "fa-file-pdf",
-      color: "text-rose-500",
-      bg: "bg-rose-50"
+      color: "text-charcoal-700",
+      bg: "bg-charcoal-50"
     }
   ];
 
@@ -57,84 +57,100 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onLoginClick }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-indigo-100 font-sans">
-      <nav className="fixed top-0 left-0 right-0 bg-white/70 backdrop-blur-xl z-50 border-b border-slate-100 px-6 py-4">
+    <div className="min-h-screen bg-ivory-50 text-charcoal-900 selection:bg-lavender-100 font-sans">
+      <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md z-50 border-b border-charcoal-100 px-6 py-4 shadow-sm">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center space-x-2 group cursor-default">
-            <div className="bg-gradient-to-tr from-indigo-600 to-cyan-500 p-2 rounded-xl text-white shadow-lg shadow-indigo-500/20">
+          <div className="flex items-center space-x-3 group cursor-default">
+            <div className="bg-lavender-600 p-2.5 rounded-xl text-white shadow-md shadow-lavender-500/20">
               <i className="fas fa-shield-halved text-lg"></i>
             </div>
-            <h1 className="text-xl font-black text-slate-900 tracking-tighter">COPYSCAN</h1>
+            <h1 className="text-xl font-bold text-charcoal-800 tracking-tight">CopyScan</h1>
           </div>
-          <Button onClick={onLoginClick} className="text-xs font-black uppercase tracking-widest px-6 py-2.5 rounded-xl bg-slate-950 text-white hover:bg-slate-800 border-none shadow-xl">
+          <Button onClick={onLoginClick} className="text-xs font-medium uppercase tracking-wide px-6 py-2.5 rounded-xl bg-charcoal-800 text-white hover:bg-charcoal-700 border-none shadow-sm hover:shadow-md transition-all duration-200">
             Sign In
           </Button>
         </div>
       </nav>
 
-      <header className="pt-40 pb-20 px-6 relative overflow-hidden">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-indigo-500/15 rounded-full blur-[100px]"></div>
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-cyan-500/15 rounded-full blur-[80px]"></div>
+      <header className="pt-40 pb-24 px-6 relative overflow-hidden">
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-lavender-100/30 rounded-full blur-[100px]"></div>
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-charcoal-100/20 rounded-full blur-[80px]"></div>
         
-        <div className="max-w-7xl mx-auto text-center space-y-8 animate-in fade-in zoom-in-95 duration-1000">
-          <div className="inline-flex items-center space-x-2 bg-indigo-600/5 border border-indigo-600/10 px-4 py-1.5 rounded-full">
-            <span className="text-[10px] font-black uppercase tracking-widest text-indigo-600">Enterprise Originality Platform</span>
+        <div className="max-w-7xl mx-auto text-center space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <div className="inline-flex items-center space-x-2 bg-lavender-50 border border-lavender-200 px-5 py-2 rounded-full">
+            <span className="text-xs font-medium uppercase tracking-wide text-lavender-700">Enterprise Originality Platform</span>
           </div>
           
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 leading-[0.95] tracking-tight max-w-4xl mx-auto">
-            Secure your <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-400">Original Ideas.</span>
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-charcoal-900 leading-[0.95] tracking-tight max-w-4xl mx-auto">
+            Protect Your <span className="text-lavender-600">Intellectual Property</span> with Confidence
           </h2>
           
-          <p className="text-lg md:text-xl text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
-            Professional-grade plagiarism detection and IP management powered by real-time hybrid scanning.
+          <p className="text-lg md:text-xl text-charcoal-600 font-normal max-w-2xl mx-auto leading-relaxed">
+            Advanced plagiarism detection and content verification. Ensure originality across web sources and your private document vault.
           </p>
           
-          <div className="flex justify-center pt-4">
-            <Button onClick={onLoginClick} className="px-10 py-5 text-lg font-black rounded-2xl bg-indigo-600 text-white shadow-2xl shadow-indigo-500/40 border-none group transition-all hover:scale-105 active:scale-95">
-              Start Your Audit <i className="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform"></i>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+            <Button onClick={onLoginClick} className="px-10 py-5 text-lg font-medium rounded-xl bg-lavender-600 text-white shadow-md shadow-lavender-500/20 border-none group transition-all duration-200 hover:scale-[1.02] hover:bg-lavender-700">
+              Start Your Audit <i className="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform duration-200"></i>
             </Button>
           </div>
           
-          <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
-            Restricted access. Registration managed by organization admins.
-          </p>
+          <div className="pt-8 space-y-3 max-w-3xl mx-auto">
+            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-charcoal-500">
+              <div className="flex items-center space-x-2">
+                <i className="fas fa-check-circle text-lavender-600"></i>
+                <span>Real-time scanning</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <i className="fas fa-check-circle text-lavender-600"></i>
+                <span>Secure document vault</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <i className="fas fa-check-circle text-lavender-600"></i>
+                <span>Certified reports</span>
+              </div>
+            </div>
+            <p className="text-xs font-medium text-charcoal-400 uppercase tracking-wide">
+              Restricted access • Registration managed by organization admins
+            </p>
+          </div>
         </div>
       </header>
 
       <section className="py-20 px-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {coreFunctions.map((f, i) => (
-            <Card key={i} className="p-8 border-none bg-white shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 rounded-[2rem] group">
-              <div className={`${f.bg} ${f.color} w-14 h-14 rounded-2xl flex items-center justify-center text-xl mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform shadow-sm`}>
+            <Card key={i} className="p-8 border border-charcoal-100 bg-white shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-200 rounded-xl group">
+              <div className={`${f.bg} ${f.color} w-14 h-14 rounded-xl flex items-center justify-center text-xl mb-6 group-hover:scale-105 transition-transform duration-200`}>
                 <i className={`fas ${f.icon}`}></i>
               </div>
-              <h4 className="text-lg font-black text-slate-900 mb-2">{f.title}</h4>
-              <p className="text-slate-500 font-medium text-xs leading-relaxed">{f.desc}</p>
+              <h4 className="text-lg font-bold text-charcoal-800 mb-2">{f.title}</h4>
+              <p className="text-charcoal-600 font-normal text-sm leading-relaxed">{f.desc}</p>
             </Card>
           ))}
         </div>
       </section>
 
-      <section className="py-20 bg-slate-950 rounded-[3rem] mx-6 mb-20 relative overflow-hidden text-white shadow-2xl shadow-indigo-900/20">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-600/10 blur-[120px]"></div>
+      <section className="py-20 bg-charcoal-800 rounded-3xl mx-6 mb-20 relative overflow-hidden text-white shadow-lg">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-lavender-500/10 blur-[120px]"></div>
         <div className="max-w-5xl mx-auto px-10 text-center relative z-10">
-          <h3 className="text-cyan-400 font-black text-[10px] uppercase tracking-[0.4em] mb-12">How it works</h3>
+          <h3 className="text-lavender-300 font-medium text-xs uppercase tracking-wider mb-12">How it works</h3>
           <div className="grid md:grid-cols-3 gap-12">
             {simplifiedWorkflow.map((step, i) => (
               <div key={i} className="space-y-4">
-                <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6 text-xl text-cyan-400">
+                <div className="w-14 h-14 bg-white/10 border border-white/20 rounded-xl flex items-center justify-center mx-auto mb-6 text-xl text-lavender-300 shadow-sm">
                   <i className={`fas ${step.icon}`}></i>
                 </div>
                 <h4 className="text-xl font-bold">{step.title}</h4>
-                <p className="text-slate-400 text-sm font-medium leading-relaxed">{step.desc}</p>
+                <p className="text-charcoal-300 text-sm font-normal leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <footer className="py-8 border-t border-slate-100 bg-white text-center">
-        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+      <footer className="py-8 border-t border-charcoal-100 bg-white/90 backdrop-blur-sm text-center">
+        <p className="text-xs font-medium text-charcoal-500 uppercase tracking-wide">
           © {new Date().getFullYear()} Requin Solutions Pvt Ltd
         </p>
       </footer>

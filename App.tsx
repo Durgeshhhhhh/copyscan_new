@@ -61,14 +61,14 @@ const AppContent: React.FC = () => {
 
   if (initializing) {
     return (
-      <div className="h-screen w-screen flex flex-col items-center justify-center bg-white">
+      <div className="h-screen w-screen flex flex-col items-center justify-center bg-ivory-50">
         <div className="relative">
-          <div className="w-16 h-16 border-4 border-indigo-50 rounded-full"></div>
-          <div className="absolute inset-0 w-16 h-16 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
+          <div className="w-20 h-20 border-4 border-charcoal-100 rounded-full"></div>
+          <div className="absolute inset-0 w-20 h-20 border-4 border-lavender-500 border-t-transparent rounded-full animate-spin"></div>
         </div>
-        <div className="mt-8 text-center">
-          <h1 className="text-xl font-black text-gray-900 tracking-tighter italic">CopyScan</h1>
-          <p className="text-xs text-gray-400 font-bold uppercase tracking-widest mt-1">Securing Intellectual Property</p>
+        <div className="mt-10 text-center">
+          <h1 className="text-2xl font-bold text-charcoal-800 tracking-tight">CopyScan</h1>
+          <p className="text-xs text-charcoal-500 font-medium uppercase tracking-wider mt-2">Securing Intellectual Property</p>
         </div>
       </div>
     );

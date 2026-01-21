@@ -221,21 +221,21 @@ export const PlagiarismChecker: React.FC<PlagiarismCheckerProps> = ({ initialTex
             <label className="flex items-center space-x-2 cursor-pointer group">
               <div 
                 onClick={() => setSearchWeb(!searchWeb)}
-                className={`w-9 h-5 rounded-full transition-colors relative flex items-center px-1 ${searchWeb ? 'bg-indigo-600' : 'bg-gray-200'}`}
+                  className={`w-9 h-5 rounded-full transition-colors relative flex items-center px-1 ${searchWeb ? 'bg-lavender-600' : 'bg-gray-200'}`}
               >
                 <div className={`w-3 h-3 bg-white rounded-full shadow-sm transition-transform ${searchWeb ? 'translate-x-4' : 'translate-x-0'}`} />
               </div>
-              <span className={`text-[9px] font-black uppercase tracking-widest ${searchWeb ? 'text-indigo-600' : 'text-gray-400'} transition-colors`}>Web</span>
+              <span className={`text-[9px] font-black uppercase tracking-widest ${searchWeb ? 'text-lavender-600' : 'text-gray-400'} transition-colors`}>Web</span>
             </label>
 
             <label className="flex items-center space-x-2 cursor-pointer group">
               <div 
                 onClick={() => setCheckVault(!checkVault)}
-                className={`w-9 h-5 rounded-full transition-colors relative flex items-center px-1 ${checkVault ? 'bg-indigo-600' : 'bg-gray-200'}`}
+                  className={`w-9 h-5 rounded-full transition-colors relative flex items-center px-1 ${checkVault ? 'bg-lavender-600' : 'bg-gray-200'}`}
               >
                 <div className={`w-3 h-3 bg-white rounded-full shadow-sm transition-transform ${checkVault ? 'translate-x-4' : 'translate-x-0'}`} />
               </div>
-              <span className={`text-[9px] font-black uppercase tracking-widest ${checkVault ? 'text-indigo-600' : 'text-gray-400'} transition-colors`}>Vault</span>
+              <span className={`text-[9px] font-black uppercase tracking-widest ${checkVault ? 'text-lavender-600' : 'text-gray-400'} transition-colors`}>Vault</span>
             </label>
           </div>
 
@@ -257,7 +257,7 @@ export const PlagiarismChecker: React.FC<PlagiarismCheckerProps> = ({ initialTex
               onClick={handleCheck} 
               isLoading={isLoading} 
               disabled={!text || text.length < 30 || (!searchWeb && !checkVault)} 
-              className="px-8 shadow-indigo-200"
+              className="px-8 shadow-lavender-200"
             >
               <i className="fas fa-bolt mr-2"></i> Run Audit
             </Button>
@@ -265,16 +265,16 @@ export const PlagiarismChecker: React.FC<PlagiarismCheckerProps> = ({ initialTex
         </div>
       </div>
 
-      <Card className="p-0 overflow-hidden border-indigo-50 shadow-2xl shadow-indigo-500/5 ring-4 ring-white">
+      <Card className="p-0 overflow-hidden border-lavender-50 shadow-2xl shadow-lavender-500/5 ring-4 ring-white">
         <textarea
           className="w-full h-80 p-8 text-xl text-gray-800 placeholder-gray-300 focus:outline-none resize-none border-none leading-relaxed font-medium"
           placeholder="Paste content here or upload (PDF, Word, PPT, HTML, TXT)..."
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <div className="bg-indigo-50/30 px-8 py-3 flex justify-between text-[10px] text-gray-400 font-black uppercase tracking-widest border-t">
+        <div className="bg-lavender-50/30 px-8 py-3 flex justify-between text-[10px] text-gray-400 font-black uppercase tracking-widest border-t">
           <span>{text.length} Characters • {getScanModeLabel()}</span>
-          <span className="text-indigo-400">{(!searchWeb && !checkVault) ? 'Select a scan source above' : 'Ready to Check Authenticity'}</span>
+          <span className="text-lavender-500">{(!searchWeb && !checkVault) ? 'Select a scan source above' : 'Ready to Check Authenticity'}</span>
         </div>
       </Card>
 
@@ -287,9 +287,9 @@ export const PlagiarismChecker: React.FC<PlagiarismCheckerProps> = ({ initialTex
 
       {result && (
         <div className="space-y-6">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-indigo-100 shadow-sm animate-in fade-in slide-in-from-top-2 duration-300">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-lavender-100 shadow-sm animate-in fade-in slide-in-from-top-2 duration-300">
              <div className="flex items-center space-x-3">
-               <div className="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white">
+               <div className="w-10 h-10 rounded-full bg-lavender-600 flex items-center justify-center text-white">
                  <i className="fas fa-check-double text-xs"></i>
                </div>
                <div>
@@ -311,7 +311,7 @@ export const PlagiarismChecker: React.FC<PlagiarismCheckerProps> = ({ initialTex
                 <svg className="w-48 h-48 transform -rotate-90">
                   <circle className="text-gray-100" strokeWidth="12" stroke="currentColor" fill="transparent" r="88" cx="96" cy="96" />
                   <circle
-                    className={`${result.score > 60 ? 'text-red-500' : result.score > 20 ? 'text-amber-500' : 'text-indigo-600'} transition-all duration-1000 ease-out`}
+                    className={`${result.score > 60 ? 'text-red-500' : result.score > 20 ? 'text-amber-500' : 'text-lavender-600'} transition-all duration-1000 ease-out`}
                     strokeWidth="12" strokeDasharray={552.9} strokeDashoffset={552.9 - (552.9 * result.score) / 100} strokeLinecap="round" stroke="currentColor" fill="transparent" r="88" cx="96" cy="96"
                   />
                 </svg>
@@ -322,10 +322,10 @@ export const PlagiarismChecker: React.FC<PlagiarismCheckerProps> = ({ initialTex
               </div>
             </Card>
 
-            <Card className="lg:col-span-8 p-10 border-indigo-50 bg-gradient-to-br from-white to-indigo-50/10">
+            <Card className="lg:col-span-8 p-10 border-lavender-50 bg-gradient-to-br from-white to-blue-50/10">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-black text-gray-900 flex items-center">
-                  <i className="fas fa-shield-halved text-indigo-600 mr-3"></i> 
+                <h3 className="text-lg font-bold text-gray-900 flex items-center">
+                  <i className="fas fa-shield-halved text-lavender-600 mr-3"></i> 
                   High-Match Results
                 </h3>
               </div>
@@ -337,23 +337,23 @@ export const PlagiarismChecker: React.FC<PlagiarismCheckerProps> = ({ initialTex
               <div className="space-y-8 max-h-[450px] overflow-y-auto pr-2 scrollbar-thin">
                 {checkVault && (
                   <div>
-                    <h3 className="text-[10px] font-black uppercase text-indigo-600 mb-4 tracking-[0.2em] border-b border-indigo-100 pb-2 flex items-center">
+                    <h3 className="text-[10px] font-black uppercase text-lavender-600 mb-4 tracking-[0.2em] border-b border-lavender-100 pb-2 flex items-center">
                       <i className="fas fa-database mr-2"></i> Vault High Matches ({vaultMatches.length})
                     </h3>
                     <div className="space-y-2">
                       {vaultMatches.length > 0 ? vaultMatches.map((source, idx) => (
                         <div 
                           key={`vault-${idx}`} 
-                          className="p-4 rounded-xl border bg-indigo-50/30 border-indigo-100 flex items-center justify-between group transition-all duration-200"
+                          className="p-4 rounded-xl border bg-lavender-50/30 border-lavender-100 flex items-center justify-between group transition-all duration-200"
                         >
                           <div className="flex-1 min-w-0 mr-4">
                             <div className="flex items-center space-x-2">
-                              <p className="text-[10px] font-black text-indigo-400 uppercase tracking-widest">Vault File:</p>
+                              <p className="text-[10px] font-black text-lavender-500 uppercase tracking-widest">Vault File:</p>
                               <h4 className="font-bold text-sm text-gray-900 truncate">{source.title}</h4>
                             </div>
                             <p className="text-[9px] text-gray-400 mt-1 uppercase font-bold tracking-tighter">Matched with internal intellectual property</p>
                           </div>
-                          <div className={`px-2 py-1 rounded text-[10px] font-black tracking-tight ${source.score > 70 ? 'bg-red-50 text-red-600' : 'bg-indigo-50 text-indigo-600'}`}>
+                          <div className={`px-2 py-1 rounded text-[10px] font-black tracking-tight ${source.score > 70 ? 'bg-red-50 text-red-600' : 'bg-lavender-50 text-lavender-600'}`}>
                             {source.score}% Match
                           </div>
                         </div>
@@ -376,16 +376,16 @@ export const PlagiarismChecker: React.FC<PlagiarismCheckerProps> = ({ initialTex
                           href={source.url} 
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-4 rounded-xl border bg-white border-gray-100 flex items-center justify-between group transition-all duration-200 hover:border-indigo-300 hover:shadow-md cursor-pointer block"
+                          className="p-4 rounded-xl border bg-white border-gray-100 flex items-center justify-between group transition-all duration-200 hover:border-lavender-300 hover:shadow-md cursor-pointer block"
                         >
                           <div className="flex-1 min-w-0 mr-4">
                             <div className="flex items-center space-x-2">
-                              <h4 className="font-bold text-sm text-gray-900 truncate group-hover:text-indigo-600">{source.title}</h4>
-                              <i className="fas fa-external-link-alt text-[10px] text-indigo-300 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                              <h4 className="font-bold text-sm text-gray-900 truncate group-hover:text-lavender-600">{source.title}</h4>
+                              <i className="fas fa-external-link-alt text-[10px] text-lavender-300 opacity-0 group-hover:opacity-100 transition-opacity"></i>
                             </div>
-                            <p className="text-[10px] text-indigo-400 truncate mt-1 font-mono hover:underline">{source.url}</p>
+                            <p className="text-[10px] text-lavender-500 truncate mt-1 font-mono hover:underline">{source.url}</p>
                           </div>
-                          <div className={`px-2 py-1 rounded text-[10px] font-black tracking-tight ${source.score > 70 ? 'bg-red-50 text-red-600' : 'bg-indigo-50 text-indigo-600'}`}>
+                          <div className={`px-2 py-1 rounded text-[10px] font-black tracking-tight ${source.score > 70 ? 'bg-red-50 text-red-600' : 'bg-lavender-50 text-lavender-600'}`}>
                             {source.score}% Match
                           </div>
                         </a>
@@ -405,14 +405,14 @@ export const PlagiarismChecker: React.FC<PlagiarismCheckerProps> = ({ initialTex
             </Card>
           </div>
 
-          <Card className="p-10 border-indigo-50 shadow-sm animate-in slide-in-from-bottom-2 duration-500">
+          <Card className="p-10 border-lavender-50 shadow-sm animate-in slide-in-from-bottom-2 duration-500">
              <div className="flex items-center justify-between mb-8">
                <div>
                  <h3 className="text-xl font-black text-gray-900 tracking-tight">Visual Analysis Breakdown</h3>
                  <p className="text-gray-400 text-xs font-bold uppercase tracking-widest mt-1">Red highlights indicate segments found in external sources</p>
                </div>
              </div>
-             <div className="bg-gray-50/50 p-8 rounded-3xl border border-gray-100 min-h-[200px] leading-relaxed text-lg font-medium text-gray-800 whitespace-pre-wrap selection:bg-indigo-100">
+             <div className="bg-gray-50/50 p-8 rounded-3xl border border-gray-100 min-h-[200px] leading-relaxed text-lg font-medium text-gray-800 whitespace-pre-wrap selection:bg-lavender-100">
                 {result.highlightedHtml ? (
                    <div dangerouslySetInnerHTML={{ __html: result.highlightedHtml }} />
                 ) : (

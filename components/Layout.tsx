@@ -33,9 +33,9 @@ export const Layout: React.FC<LayoutProps> = ({ children, user, currentView, onV
   }
 
   return (
-    <div className="flex flex-col h-full bg-slate-50 relative font-sans">
+    <div className="flex flex-col h-full bg-ivory-50 relative font-sans">
       <div className={`fixed top-0 left-0 right-0 h-1 z-[100] transition-all duration-300 pointer-events-none ${isLoading ? 'opacity-100' : 'opacity-0'}`}>
-        <div className="h-full bg-gradient-to-r from-indigo-600 via-cyan-400 to-indigo-600 animate-[loading_1.5s_infinite_linear]" style={{ width: '30%', backgroundSize: '200% 100%' }}></div>
+        <div className="h-full bg-gradient-to-r from-lavender-500 via-lavender-600 to-lavender-500 animate-[loading_1.5s_infinite_linear]" style={{ width: '30%', backgroundSize: '200% 100%' }}></div>
       </div>
       
       <style>{`
@@ -46,13 +46,13 @@ export const Layout: React.FC<LayoutProps> = ({ children, user, currentView, onV
         }
       `}</style>
 
-      <header className="bg-white/80 backdrop-blur-md border-b border-slate-100 px-6 py-3 flex items-center justify-between sticky top-0 z-20">
+      <header className="bg-white/95 backdrop-blur-md border-b border-charcoal-100 px-6 py-4 flex items-center justify-between sticky top-0 z-20 shadow-sm">
         <div className="flex items-center space-x-6">
-          <div className="flex items-center space-x-2 cursor-pointer" onClick={() => onViewChange('HOME')}>
-            <div className="bg-gradient-to-tr from-indigo-600 to-cyan-500 p-1.5 rounded-lg text-white shadow-lg shadow-indigo-500/20">
+          <div className="flex items-center space-x-3 cursor-pointer group" onClick={() => onViewChange('HOME')}>
+            <div className="bg-lavender-600 p-2 rounded-xl text-white shadow-md shadow-lavender-500/20 group-hover:shadow-lavender-500/30 transition-all duration-200">
               <i className="fas fa-shield-halved text-sm"></i>
             </div>
-            <h1 className="text-lg font-black text-slate-900 tracking-tighter">CopyScan</h1>
+            <h1 className="text-lg font-bold text-charcoal-800 tracking-tight">CopyScan</h1>
           </div>
           
           {user && (
@@ -61,7 +61,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, user, currentView, onV
                 <button 
                   key={item.id}
                   onClick={() => onViewChange(item.id as AppView)}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${currentView === item.id ? 'bg-indigo-600 text-white shadow-md shadow-indigo-500/20' : 'text-slate-400 hover:text-slate-900 hover:bg-indigo-50/50'}`}
+                  className={`px-4 py-2 rounded-lg text-xs font-medium transition-all duration-200 ${currentView === item.id ? 'bg-lavender-600 text-white shadow-sm shadow-lavender-500/20' : 'text-charcoal-500 hover:text-charcoal-800 hover:bg-charcoal-50'}`}
                 >
                   {item.label}
                 </button>
@@ -74,20 +74,20 @@ export const Layout: React.FC<LayoutProps> = ({ children, user, currentView, onV
           <div className="flex items-center space-x-4">
             <button 
               onClick={() => onViewChange('PROFILE')}
-              className="flex items-center space-x-2"
+              className="flex items-center space-x-3 hover:opacity-80 transition-opacity duration-200"
             >
               <img 
-                src={user.photoURL || `https://ui-avatars.com/api/?name=${user.displayName || user.email}&background=4f46e5&color=fff`} 
+                src={user.photoURL || `https://ui-avatars.com/api/?name=${user.displayName || user.email}&background=7c3aed&color=fff`} 
                 alt="Profile" 
-                className="w-7 h-7 rounded-full ring-2 ring-indigo-100"
+                className="w-8 h-8 rounded-full ring-2 ring-lavender-100 shadow-sm"
               />
-              <span className="text-[10px] font-black uppercase text-slate-500 hidden sm:inline-block">
+              <span className="text-xs font-medium text-charcoal-700 hidden sm:inline-block">
                 {user.displayName?.split(' ')[0] || 'User'}
               </span>
             </button>
-            <div className="h-4 w-px bg-slate-100"></div>
-            <button onClick={handleLogout} className="text-slate-400 hover:text-red-500 transition-colors">
-              <i className="fas fa-power-off text-xs"></i>
+            <div className="h-5 w-px bg-charcoal-200"></div>
+            <button onClick={handleLogout} className="text-charcoal-400 hover:text-red-600 transition-colors duration-200 p-2 hover:bg-red-50 rounded-lg">
+              <i className="fas fa-power-off text-sm"></i>
             </button>
           </div>
         )}
@@ -99,8 +99,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, user, currentView, onV
         </div>
       </main>
 
-      <footer className="bg-white border-t border-slate-100 px-6 py-4 text-center">
-        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">
+      <footer className="bg-white/90 backdrop-blur-sm border-t border-charcoal-100 px-6 py-5 text-center">
+        <p className="text-xs font-medium uppercase tracking-wider text-charcoal-500">
           © {new Date().getFullYear()} Requin Solutions Pvt Ltd
         </p>
       </footer>
