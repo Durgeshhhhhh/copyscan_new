@@ -1,0 +1,5 @@
+{
+  "name": "CopyScan",
+  "description": "An intelligent plagiarism detection tool designed to protect your original work through real-time web verification and private vault analysis.",
+  "requestFramePermissions": []
+}
