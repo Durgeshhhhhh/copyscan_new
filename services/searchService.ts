@@ -1,236 +1,253 @@
-
 import { UserDocument, PlagiarismResult, ComparisonResult } from "../types";
 
 /**
- * GOOGLE CUSTOM SEARCH CONFIGURATION
+ * TAVILY SEARCH CONFIGURATION
  */
-const CUSTOM_SEARCH_KEY = "AIzaSyBvrgDtqa8-TW539fGqUS2WqpedtTm_0y8".trim();
-const SEARCH_ENGINE_ID = "d47652e3aa4a74472".trim(); 
+const TAVILY_API_KEY = "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";
 
 /**
- * Normalizes text for comparison - removes punctuation and extra whitespace
+ * Normalizes text for comparison
  */
-const normalize = (text: string) => text.toLowerCase().replace(/[^\w\s]/g, ' ').replace(/\s+/g, ' ').trim();
+const normalize = (text: string) =>
+  text
+    .toLowerCase()
+    .replace(/[^\w\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 
 /**
- * Heuristic similarity engine for overall score
+ * Similarity engine
  */
 const calculateSimilarity = (input: string, target: string): number => {
   const cleanInput = normalize(input);
   const cleanTarget = normalize(target);
-  
-  const words1 = cleanInput.split(' ').filter(w => w.length > 2);
-  const words2 = cleanTarget.split(' ').filter(w => w.length > 2);
-  
-  if (words1.length === 0 || words2.length === 0) return 0;
+
+  const words1 = cleanInput.split(" ").filter(w => w.length > 2);
+  const words2 = cleanTarget.split(" ").filter(w => w.length > 2);
+
+  if (!words1.length || !words2.length) return 0;
 
   const set1 = new Set(words1);
   const set2 = new Set(words2);
-  const intersection = new Set([...set1].filter(x => set2.has(x)));
+
+  const intersection = [...set1].filter(x => set2.has(x));
   const union = new Set([...set1, ...set2]);
-  const jaccard = intersection.size / union.size;
+
+  const jaccard = intersection.length / union.size;
 
   let sequenceMatch = 0;
   const phraseLength = 4;
+
   if (words1.length >= phraseLength) {
     let matches = 0;
     const sampleSize = Math.min(words1.length - phraseLength + 1, 15);
+
     for (let i = 0; i < sampleSize; i++) {
-      const phrase = words1.slice(i, i + phraseLength).join(' ');
-      if (cleanTarget.includes(phrase)) {
-        matches++;
-      }
+      const phrase = words1.slice(i, i + phraseLength).join(" ");
+      if (cleanTarget.includes(phrase)) matches++;
     }
     sequenceMatch = matches / sampleSize;
   }
 
-  const score = (jaccard * 0.3) + (sequenceMatch * 0.7);
+  const score = jaccard * 0.3 + sequenceMatch * 0.7;
   return Math.min(100, Math.round(score * 100 * 2.5));
 };
 
 /**
- * Breaks text into search-friendly chunks
+ * Search-friendly chunks
  */
 const getSearchQueries = (text: string): string[] => {
   const words = text.split(/\s+/).filter(w => w.length > 3);
-  if (words.length === 0) return [];
+  if (!words.length) return [];
+
   const queries: string[] = [];
-  if (words.length >= 8) {
-    queries.push(words.slice(0, 8).join(' '));
-  } else {
-    queries.push(words.join(' '));
-  }
+  queries.push(words.slice(0, 8).join(" "));
+
   if (words.length >= 30) {
     const mid = Math.floor(words.length / 2);
-    queries.push(words.slice(mid, mid + 8).join(' '));
+    queries.push(words.slice(mid, mid + 8).join(" "));
   }
   return queries;
 };
 
 /**
- * Generates highlighted HTML by comparing segments against sources.
+ * Highlight generator
  */
 const generateHighlights = (text: string, sources: any[]): string => {
-  if (!sources || sources.length === 0) return text;
+  if (!sources.length) return text;
 
   const tokens = text.split(/(\s+|[.!?,"';:()]+)/);
-  const sourcePool = sources.map(s => normalize((s.snippet || "") + " " + (s.title || "") + " " + (s.content || "")));
-
-  const wordInfo: { word: string; tokenIndex: number }[] = [];
-  tokens.forEach((token, index) => {
-    const clean = normalize(token);
-    if (clean.length > 0) {
-      wordInfo.push({ word: clean, tokenIndex: index });
-    }
-  });
+  const sourcePool = sources.map(s =>
+    normalize(`${s.snippet || ""} ${s.title || ""} ${s.content || ""}`)
+  );
 
   const matchedTokenIndices = new Set<number>();
   const windowSize = 3;
 
-  for (let i = 0; i <= wordInfo.length - windowSize; i++) {
-    const window = wordInfo.slice(i, i + windowSize);
-    const phrase = window.map(w => w.word).join(' ');
-    
-    if (sourcePool.some(source => source.includes(phrase))) {
-      const startIndex = window[0].tokenIndex;
-      const endIndex = window[windowSize - 1].tokenIndex;
-      for (let j = startIndex; j <= endIndex; j++) {
+  const cleanWords = tokens.map(t => normalize(t));
+
+  for (let i = 0; i <= cleanWords.length - windowSize; i++) {
+    const phrase = cleanWords.slice(i, i + windowSize).join(" ");
+    if (sourcePool.some(src => src.includes(phrase))) {
+      for (let j = i; j < i + windowSize; j++) {
         matchedTokenIndices.add(j);
       }
     }
   }
 
   let html = "";
-  let isCurrentlyHighlighted = false;
+  let open = false;
 
-  tokens.forEach((token, index) => {
-    const isMatch = matchedTokenIndices.has(index);
+  tokens.forEach((token, i) => {
+    const match = matchedTokenIndices.has(i);
 
-    if (isMatch && !isCurrentlyHighlighted) {
-      html += `<mark class="bg-red-100 text-red-700 rounded-sm px-0.5 border-b-2 border-red-300 font-semibold transition-all duration-300">`;
-      isCurrentlyHighlighted = true;
-    } else if (!isMatch && isCurrentlyHighlighted) {
+    if (match && !open) {
+      html += `<mark class="bg-red-100 text-red-700 px-0.5 rounded-sm font-semibold">`;
+      open = true;
+    } else if (!match && open) {
       html += `</mark>`;
-      isCurrentlyHighlighted = false;
+      open = false;
     }
-    
     html += token;
   });
 
-  if (isCurrentlyHighlighted) html += `</mark>`;
-
+  if (open) html += `</mark>`;
   return html;
 };
 
+/**
+ * MAIN PLAGIARISM CHECK
+ */
 export const checkPlagiarism = async (
-  text: string, 
-  vaultDocs: UserDocument[] = [], 
-  includeWeb: boolean = true
+  text: string,
+  vaultDocs: UserDocument[] = [],
+  includeWeb = true
 ): Promise<PlagiarismResult> => {
   if (!text || text.trim().length < 20) {
-    return { score: 0, summary: "Input content is too short for a reliable scan.", sources: [] };
+    return { score: 0, summary: "Input too short for scan.", sources: [] };
   }
 
   const WEB_SIMILARITY_THRESHOLD = 15;
 
-  try {
-    const vaultMatches = vaultDocs.map(doc => ({
+  const vaultMatches = vaultDocs
+    .map(doc => ({
       title: doc.title,
-      // Encode ownerId and docId into the URL for easy retrieval in audit views
       url: `internal://vault/${doc.ownerId}/${doc.id}`,
       content: doc.content,
       isPrivate: true,
       score: calculateSimilarity(text, doc.content)
-    })).filter(m => m.score > 5);
+    }))
+    .filter(m => m.score > 5);
 
-    const webSources: any[] = [];
+  const webSources: any[] = [];
 
-    if (includeWeb && CUSTOM_SEARCH_KEY && SEARCH_ENGINE_ID) {
-      const searchQueries = getSearchQueries(text);
-      
-      for (const q of searchQueries) {
-        const params = new URLSearchParams({
-          key: CUSTOM_SEARCH_KEY,
-          cx: SEARCH_ENGINE_ID,
-          q: q
+  if (includeWeb && TAVILY_API_KEY) {
+    const queries = getSearchQueries(text);
+
+    for (const query of queries) {
+      try {
+        const response = await fetch("https://api.tavily.com/search", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            api_key: TAVILY_API_KEY,
+            query,
+            search_depth: "advanced",
+            include_raw_content: false,
+            max_results: 5
+          })
         });
 
-        try {
-          const response = await fetch(`https://www.googleapis.com/customsearch/v1?${params.toString()}`);
-          const data = await response.json();
+        const data = await response.json();
 
-          if (data.items) {
-            data.items.forEach((item: any) => {
-              const score = calculateSimilarity(text, (item.snippet || "") + " " + (item.title || ""));
-              if (score >= WEB_SIMILARITY_THRESHOLD) {
-                webSources.push({
-                  title: item.title,
-                  url: item.link,
-                  snippet: item.snippet,
-                  isPrivate: false,
-                  score: score
-                });
-              }
-            });
-          }
-        } catch (e) {
-          console.warn("Search chunk failed, continuing...");
+        if (data?.results) {
+          data.results.forEach((item: any) => {
+            const score = calculateSimilarity(
+              text,
+              `${item.title || ""} ${item.content || ""}`
+            );
+
+            if (score >= WEB_SIMILARITY_THRESHOLD) {
+              webSources.push({
+                title: item.title,
+                url: item.url,
+                snippet: item.content,
+                isPrivate: false,
+                score
+              });
+            }
+          });
         }
+      } catch (e) {
+        console.warn("Tavily search failed, continuing...");
       }
     }
-
-    const allMatches = [...vaultMatches, ...webSources].sort((a, b) => b.score - a.score);
-    const uniqueMatches = allMatches.filter((v, i, a) => a.findIndex(t => t.url === v.url) === i);
-    const topScore = uniqueMatches.length > 0 ? Math.max(...uniqueMatches.map(m => m.score)) : 0;
-
-    const highlightedHtml = generateHighlights(text, uniqueMatches);
-
-    let summary = "";
-    const scanContext = includeWeb ? "web and vault" : "private vault";
-
-    if (uniqueMatches.length === 0) {
-      summary = `No significant matches found in your ${scanContext}.`;
-    } else if (topScore > 60) {
-      summary = `High similarity detected (${topScore}%). Content appears in ${uniqueMatches.length} external sources.`;
-    } else {
-      summary = `Audit complete: ${topScore}% overlap detected across ${uniqueMatches.length} sources.`;
-    }
-
-    return {
-      score: Math.min(100, topScore),
-      summary,
-      highlightedHtml,
-      sources: uniqueMatches.map(({title, url, score, isPrivate}) => ({title, url, score, isPrivate}))
-    };
-  } catch (error: any) {
-    console.error("Plagiarism Service Error:", error);
-    throw error;
   }
+
+  const allMatches = [...vaultMatches, ...webSources].sort(
+    (a, b) => b.score - a.score
+  );
+
+  const uniqueMatches = allMatches.filter(
+    (v, i, a) => a.findIndex(t => t.url === v.url) === i
+  );
+
+  const topScore = uniqueMatches.length
+    ? Math.max(...uniqueMatches.map(m => m.score))
+    : 0;
+
+  const highlightedHtml = generateHighlights(text, uniqueMatches);
+
+  return {
+    score: Math.min(100, topScore),
+    summary:
+      topScore > 60
+        ? `High similarity detected (${topScore}%).`
+        : `Scan complete: ${topScore}% similarity found.`,
+    highlightedHtml,
+    sources: uniqueMatches.map(({ title, url, score, isPrivate }) => ({
+      title,
+      url,
+      score,
+      isPrivate
+    }))
+  };
 };
 
-export const compareTexts = async (textA: string, textB: string): Promise<ComparisonResult> => {
+/**
+ * TEXT-TO-TEXT COMPARISON (unchanged)
+ */
+export const compareTexts = async (
+  textA: string,
+  textB: string
+): Promise<ComparisonResult> => {
   const score = calculateSimilarity(textA, textB);
-  const cleanB = normalize(textB).split(' ').filter(w => w.length > 1);
-  const cleanA = normalize(textA).split(' ').filter(w => w.length > 1);
-  const setA = new Set(cleanA);
-  const setB = new Set(cleanB);
-  
-  const highlightOverlap = (content: string, compareWords: Set<string>) => {
-    return content.split(/(\s+)/).map(part => {
-      const clean = part.toLowerCase().replace(/[^\w]/g, '');
-      if (clean && compareWords.has(clean)) {
-        return `<mark class="bg-amber-100 text-amber-900 rounded-sm px-0.5">${part}</mark>`;
-      }
-      return part;
-    }).join('');
-  };
+
+  const normalizeSet = (t: string) =>
+    new Set(normalize(t).split(" ").filter(w => w.length > 1));
+
+  const setA = normalizeSet(textA);
+  const setB = normalizeSet(textB);
+
+  const highlight = (text: string, set: Set<string>) =>
+    text
+      .split(/(\s+)/)
+      .map(w =>
+        set.has(normalize(w))
+          ? `<mark class="bg-amber-100 px-0.5 rounded-sm">${w}</mark>`
+          : w
+      )
+      .join("");
 
   return {
     score,
-    summary: score > 50 
-      ? "High structural overlap detected between both documents." 
-      : "Low direct overlap, but some matching keywords identified.",
-    highlightedTextA: highlightOverlap(textA, setB),
-    highlightedTextB: highlightOverlap(textB, setA)
+    summary:
+      score > 50
+        ? "High overlap detected."
+        : "Low overlap with some shared terms.",
+    highlightedTextA: highlight(textA, setB),
+    highlightedTextB: highlight(textB, setA)
   };
 };
