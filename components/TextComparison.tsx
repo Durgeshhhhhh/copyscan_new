@@ -214,7 +214,10 @@ export const TextComparison: React.FC = () => {
           <Card className="bg-lavender-600 border-none p-8 shadow-2xl shadow-lavender-500/20 text-white">
             <div className="flex flex-col md:flex-row gap-8 items-center">
               <div className="flex flex-col items-center">
-                <div className="text-5xl font-bold tracking-tighter">{result.score}%</div>
+                <div className="text-5xl font-black tracking-tighter text-indigo-900">
+  {result.score}%
+</div>
+
                 <div className="text-[10px] font-semibold text-lavender-200 uppercase tracking-widest mt-1">Similarity</div>
               </div>
               <div className="h-16 w-px bg-white/20 hidden md:block"></div>

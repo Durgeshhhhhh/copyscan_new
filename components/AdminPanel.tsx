@@ -504,11 +504,11 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onScanDocument }) => {
                           <div className="space-y-3">
                              <div>
                                 <p className="text-[8px] font-black text-lavender-400 uppercase tracking-[0.2em] mb-0.5">Primary Email</p>
-                                <p className="font-mono text-sm">{selectedUserDetail.email}</p>
+                                <p className="font-mono text-sm text-black">{selectedUserDetail.email}</p>
                              </div>
                              <div>
                                 <p className="text-[8px] font-black text-lavender-400 uppercase tracking-[0.2em] mb-0.5">Login Password</p>
-                                <p className="font-mono text-xl tracking-widest">{selectedUserDetail.password || 'HIDDEN'}</p>
+                                <p className="font-mono text-xl tracking-widest text-black">{selectedUserDetail.password || 'HIDDEN'}</p>
                              </div>
                           </div>
                         </div>
