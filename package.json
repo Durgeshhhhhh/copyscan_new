@@ -16,12 +16,14 @@
     "mammoth": "^1.11.0",
     "node-fetch": "^3.3.2",
     "pdfjs-dist": "^4.10.38",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0",
+    "@types/node": "^25.0.10",
+    "@types/react": "^18.3.27",
+    "@types/react-dom": "^18.3.7",
+    "@vercel/node": "^5.5.26",
     "@vitejs/plugin-react": "^4.7.0",
     "typescript": "^5.9.3",
     "vite": "^7.3.1"

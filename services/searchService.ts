@@ -1,11 +1,6 @@
 import { UserDocument, PlagiarismResult, ComparisonResult } from "../types";
 
 /**
- * TAVILY SEARCH CONFIGURATION
- */
-const TAVILY_API_KEY = "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";
-
-/**
  * Normalizes text for comparison
  */
 const normalize = (text: string) =>
@@ -141,18 +136,16 @@ export const checkPlagiarism = async (
 
   const webSources: any[] = [];
 
-  if (includeWeb && TAVILY_API_KEY) {
+  if (includeWeb) {
     const queries = getSearchQueries(text);
 
     for (const query of queries) {
       try {
-        const response = await fetch("https://api.tavily.com/search", {
+        // Call our Vercel serverless API instead of Tavily directly
+        const response = await fetch("/api/tavily-search", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            api_key: TAVILY_API_KEY,
             query,
             search_depth: "advanced",
             include_raw_content: false,
@@ -217,7 +210,7 @@ export const checkPlagiarism = async (
 };
 
 /**
- * TEXT-TO-TEXT COMPARISON (unchanged)
+ * TEXT-TO-TEXT COMPARISON
  */
 export const compareTexts = async (
   textA: string,
