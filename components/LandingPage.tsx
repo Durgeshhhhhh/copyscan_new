@@ -288,10 +288,37 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onLoginClick }) => {
         </div>
       </section>
 
-      <footer className="py-8 border-t border-charcoal-100 bg-white/90 backdrop-blur-sm text-center">
-        <p className="text-xs font-medium text-charcoal-500 uppercase tracking-wide">
-          © {new Date().getFullYear()} Requin Solutions Pvt Ltd
-        </p>
+      <footer className="bg-white border-t border-violet-50/30 px-8 py-10">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+          <div className="space-y-2">
+            <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-violet-600">Headquarters</h4>
+            <p className="text-[11px] font-bold text-slate-500 leading-relaxed">
+              Plot no 6/397, 1st Floor, Sec-6,<br/>
+              Malviya Nagar, Jaipur, Rajasthan (302017)
+            </p>
+          </div>
+          
+          <div className="space-y-3 text-center md:text-left">
+            <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-violet-600">Contact & Support</h4>
+            <a href="mailto:requingroupsolutions@gmail.com" className="text-xs font-bold text-slate-900 hover:text-violet-600 transition-colors">
+              requingroupsolutions@gmail.com
+            </a>
+            <div className="flex justify-center md:justify-start space-x-4 pt-1">
+              <a href="https://www.requingroup.com/" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-slate-900 transition-colors">
+                <i className="fas fa-globe"></i>
+              </a>
+              <a href="https://www.linkedin.com/company/requin-solutions-pvt-ltdd/about/" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-slate-900 transition-colors">
+                <i className="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+
+          <div className="md:text-right flex flex-col items-center md:items-end space-y-2">
+            <p className="text-[10px] font-black uppercase tracking-[0.5em] text-slate-300">
+              © {new Date().getFullYear()} Requin Solutions Pvt Ltd
+            </p>
+          </div>
+        </div>
       </footer>
     </div>
   );
