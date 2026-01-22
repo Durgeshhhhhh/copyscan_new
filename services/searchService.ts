@@ -3,7 +3,7 @@ import { UserDocument, PlagiarismResult, ComparisonResult } from "../types";
 /**
  * TAVILY SEARCH CONFIGURATION
  */
-const TAVILY_API_KEY = "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";
+const TAVILY_API_KEY = "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";
 
 /**
  * Normalizes text for comparison
