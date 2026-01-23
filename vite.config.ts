@@ -6,6 +6,14 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: 'dist',
-    sourcemap: true
+    sourcemap: false,
+    minify: 'terser',
+  },
+  // Force production-like behavior in dev mode (makes debugging hard!)
+  server: {
+    sourcemapIgnoreList: () => true,
+  },
+  esbuild: {
+    drop: ['console', 'debugger'],
   }
 });
