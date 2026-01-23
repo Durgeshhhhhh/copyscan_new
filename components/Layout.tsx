@@ -99,38 +99,38 @@ export const Layout: React.FC<LayoutProps> = ({ children, user, currentView, onV
         </div>
       </main>
 
-<footer className="bg-[#080B12] border-t-4 border-violet-600 text-slate-300 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-violet-600/5 rounded-full blur-[140px] -mr-40 -mt-40 pointer-events-none"></div>
+<footer className="bg-[#0B0F1A] border-t-4 border-violet-500 text-slate-300 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-violet-500/5 rounded-full blur-[140px] -mr-40 -mt-40 pointer-events-none"></div>
 
       <div className="max-w-[1440px] mx-auto relative z-10 px-6 md:px-12 pt-12 pb-8">
         
         {/* Logo Section - Separate */}
-        <div className="mb-8 pb-6 border-b border-slate-800">
-          <div className="flex items-center space-x-4 cursor-default">
-            <div className="bg-violet-600 p-2.5 rounded-xl text-white shadow-xl shadow-violet-900/50 flex-shrink-0">
-              <i className="fas fa-shield-halved text-3xl"></i>
+        <div className="mb-8 pb-6 border-b border-slate-700/50">
+          <div className="flex items-center space-x-3 cursor-default">
+            <div className="bg-violet-500 p-2.5 rounded-xl text-white shadow-lg shadow-violet-900/30 flex-shrink-0">
+              <i className="fas fa-shield-halved text-2xl"></i>
             </div>
-            <span className="text-4xl font-extrabold text-white tracking-tight uppercase font-sans">
+            <span className="text-[32px] font-bold text-white tracking-tight font-sans">
               COPYSCAN
             </span>
           </div>
 
-          <div className="pt-4 space-y-1 border-l-2 border-violet-600/50 pl-5 ml-2">
-            <p className="text-base font-extrabold text-white uppercase tracking-[0.35em] font-sans">
-              REQUIN SOLUTIONS PVT LTD
+          <div className="pt-4 space-y-1 border-l-2 border-violet-500/40 pl-5 ml-2">
+            <p className="text-[15px] font-semibold text-slate-200 tracking-tight font-sans">
+              Requin Solutions Pvt Ltd
             </p>
 
             <a
               href="https://www.requingroup.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-sm font-semibold tracking-widest uppercase text-violet-400 hover:text-violet-300 transition underline underline-offset-4"
+              className="inline-flex items-center gap-1 text-[13px] font-medium tracking-tight text-violet-400 hover:text-violet-300 transition underline underline-offset-4"
             >
               www.requingroup.com
-              <span className="text-sm">↗</span>
+              <span className="text-[13px]">↗</span>
             </a>
 
-            <p className="text-sm font-bold text-slate-500 tracking-[0.15em] uppercase pt-1">
+            <p className="text-[13px] font-medium text-slate-400 tracking-tight pt-1">
               CIN: U72900RJ2021PTC075344
             </p>
           </div>
@@ -140,9 +140,9 @@ export const Layout: React.FC<LayoutProps> = ({ children, user, currentView, onV
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 items-start mb-8">
 
           {/* Column 1 - Solutions */}
-          <div className="space-y-4 pb-4 md:pb-0 border-b md:border-b-0 border-slate-800">
-            <h4 className="text-xl font-black uppercase tracking-[0.4em] text-white flex items-center font-sans">
-              <span className="w-1 h-4 bg-violet-600 mr-3"></span> Solutions
+          <div className="space-y-4 pb-4 md:pb-0 border-b md:border-b-0 border-slate-700/50">
+            <h4 className="text-[20px] font-bold tracking-tight text-white flex items-center font-sans">
+              <span className="w-1 h-5 bg-violet-500 mr-3"></span> Solutions
             </h4>
 
             <ul className="space-y-2">
@@ -152,9 +152,9 @@ export const Layout: React.FC<LayoutProps> = ({ children, user, currentView, onV
                     href="https://www.requingroup.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group text-lg font-black uppercase tracking-tighter flex items-center text-slate-500 hover:text-violet-400 transition-all duration-300 font-sans"
+                    className="group text-[18px] font-medium tracking-tight flex items-center text-slate-300 hover:text-violet-400 transition-all duration-300 font-sans"
                   >
-                    <span className="w-1 h-1 bg-violet-600/40 rounded-full mr-3 group-hover:bg-violet-400"></span>
+                    <span className="w-1 h-1 bg-violet-500/40 rounded-full mr-3 group-hover:bg-violet-400"></span>
                     {item}
                     <span className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
                   </a>
@@ -164,27 +164,27 @@ export const Layout: React.FC<LayoutProps> = ({ children, user, currentView, onV
           </div>
 
           {/* Column 2 - Headquarters */}
-          <div className="space-y-4 pb-4 md:pb-0 border-b md:border-b-0 border-slate-800">
-            <h4 className="text-xl font-black uppercase tracking-[0.4em] text-white flex items-center font-sans">
-              <span className="w-1 h-4 bg-violet-600 mr-3"></span> Headquarters
+          <div className="space-y-4 pb-4 md:pb-0 border-b md:border-b-0 border-slate-700/50">
+            <h4 className="text-[20px] font-bold tracking-tight text-white flex items-center font-sans">
+              <span className="w-1 h-5 bg-violet-500 mr-3"></span> Headquarters
             </h4>
-            <p className="text-lg font-bold text-slate-500 leading-relaxed uppercase tracking-wider font-sans">
-              Plot no 6/397, 1st Floor, Sec-6,<br />
+            <p className="text-[18px] font-normal text-slate-300 leading-relaxed tracking-tight font-sans">
+              Plot No 6/397, 1st Floor, Sec-6,<br />
               Malviya Nagar, Jaipur, Rajasthan<br />
               India - 302017
             </p>
           </div>
 
           {/* Column 3 - Compliance */}
-          <div className="space-y-4 pb-4 md:pb-0 border-b md:border-b-0 border-slate-800">
-            <h4 className="text-xl font-black uppercase tracking-[0.4em] text-white flex items-center font-sans">
-              <span className="w-1 h-4 bg-violet-600 mr-3"></span> Compliance
+          <div className="space-y-4 pb-4 md:pb-0 border-b md:border-b-0 border-slate-700/50">
+            <h4 className="text-[20px] font-bold tracking-tight text-white flex items-center font-sans">
+              <span className="w-1 h-5 bg-violet-500 mr-3"></span> Compliance
             </h4>
             <div className="flex flex-wrap gap-2">
               {['SOC2', 'GDPR', 'ISO 27001'].map(tag => (
                 <span
                   key={tag}
-                  className="px-3 py-2 bg-slate-900 rounded text-sm font-black text-white border border-slate-800 tracking-widest hover:border-violet-600 transition font-sans"
+                  className="px-3 py-1.5 bg-slate-800/50 rounded text-[18px] font-medium text-slate-200 border border-slate-700 tracking-tight hover:border-violet-500 transition font-sans"
                 >
                   {tag}
                 </span>
@@ -194,21 +194,21 @@ export const Layout: React.FC<LayoutProps> = ({ children, user, currentView, onV
 
           {/* Column 4 - Support */}
           <div className="space-y-4 pb-4 md:pb-0">
-            <h4 className="text-xl font-black uppercase tracking-[0.4em] text-white flex items-center font-sans">
-              <span className="w-1 h-4 bg-violet-600 mr-3"></span> Support
+            <h4 className="text-[20px] font-bold tracking-tight text-white flex items-center font-sans">
+              <span className="w-1 h-5 bg-violet-500 mr-3"></span> Support
             </h4>
 
             <div className="space-y-1">
               <a
                 href="mailto:requingroupsolutions@gmail.com"
-                className="text-lg font-black lowercase tracking-tight text-white hover:text-violet-400 underline-offset-4 hover:underline transition font-sans block"
+                className="text-[18px] font-normal lowercase tracking-tight text-slate-200 hover:text-violet-400 underline-offset-4 hover:underline transition font-sans block"
               >
                 requingroupsolutions@gmail.com
               </a>
 
               <div className="flex items-center space-x-2 pt-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-base font-black uppercase text-green-500 tracking-widest font-sans">
+                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                <span className="text-[18px] font-medium text-emerald-400 tracking-tight font-sans">
                   Nodes Active
                 </span>
               </div>
@@ -219,12 +219,12 @@ export const Layout: React.FC<LayoutProps> = ({ children, user, currentView, onV
       </div>
 
       {/* Copyright */}
-      <div className="bg-[#0A0E17] border-t border-slate-800/50 py-6 px-6 md:px-12">
+      <div className="bg-[#090D16] border-t border-slate-700/50 py-6 px-6 md:px-12">
         <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
           <div className="flex items-center space-x-3">
-            <i className="fas fa-copyright text-violet-600 text-2xl"></i>
-            <p className="text-base font-black text-white uppercase tracking-[0.5em] font-sans">
-              {new Date().getFullYear()} REQUIN SOLUTIONS PVT LTD | ALL RIGHTS RESERVED
+            <i className="fas fa-copyright text-violet-500 text-xl"></i>
+            <p className="text-[15px] font-medium text-slate-300 tracking-tight font-sans">
+              {new Date().getFullYear()} Requin Solutions Pvt Ltd | All Rights Reserved
             </p>
           </div>
 
@@ -232,7 +232,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, user, currentView, onV
             {['Privacy Policy', 'Terms of Service', 'Data SLA'].map(item => (
               <span
                 key={item}
-                className="text-base font-black text-slate-600 uppercase tracking-[0.3em] hover:text-violet-400 transition cursor-default font-sans"
+                className="text-[15px] font-medium text-slate-500 tracking-tight hover:text-violet-400 transition cursor-default font-sans"
               >
                 {item}
               </span>
